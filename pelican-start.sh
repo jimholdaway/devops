@@ -1,28 +1,23 @@
 #!/bin/bash
 
-podman pod stop \
-	pelican-server
-
-podman pod rm \
-	pelican-server
-
-podman pod create \
-	--name pelican-server \
-	-p 8080:8000
-
 if	[[ $1 = "-d" ]]; then
-	podman run \
-		--pod pelican-server \
-		--name pelican-dev \
+	docker rm -f jimholdaway/pelican-docker
+	docker run \
+		--rm \
+		--name pelican-devserver \
+		-p 80:8000 \
 		-v $(pwd):/project \
 		-it \
-		quay.io/jimholdaway/pelican_test:latest \
+		jimholdaway/pelican_docker:latest \
 		make devserver
 else
-	podman run \
-                --pod pelican-server \
-                --name pelican-shell \
+	docker rm -f jimholdaway/pelican-docker
+        docker run \
+                --rm \
+                --name pelican-devserver \
+                -p 80:8000 \
                 -v $(pwd):/project \
                 -it \
-                quay.io/jimholdaway/pelican_test:latest
+                jimholdaway/pelican_docker:latest \
+                make devserver
 fi
