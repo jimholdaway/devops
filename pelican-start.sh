@@ -8,7 +8,7 @@ if	[[ $1 = "-d" ]]; then
 		-p 80:8000 \
 		-v $(pwd):/project \
 		-it \
-		jimholdaway/pelican_docker:latest \
+		jimholdaway/pelican_docker:devel \
 		make devserver
 else
 	docker rm -f jimholdaway/pelican-docker
@@ -18,5 +18,5 @@ else
                 -p 80:8000 \
                 -v $(pwd):/project \
                 -it \
-                jimholdaway/pelican_docker:latest
+                jimholdaway/pelican_docker:devel
 fi
