@@ -1,4 +1,4 @@
-Dockerfile and start script for Pelican static site generator.
+Dockerfile and start script for [Pelican](https://docs.getpelican.com/en/stable/index.html) static site generator.
 
 An image where python dependencies are install on an Ubuntu 20.04 base to run Pelican in a docker container, available at [docker hub](https://hub.docker.com/repository/docker/jimholdaway/pelican-docker).
 
