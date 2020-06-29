@@ -18,6 +18,5 @@ else
                 -p 80:8000 \
                 -v $(pwd):/project \
                 -it \
-                jimholdaway/pelican_docker:latest \
-                make devserver
+                jimholdaway/pelican_docker:latest
 fi
