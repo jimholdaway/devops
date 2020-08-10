@@ -1,5 +1,5 @@
 FROM ubuntu:focal
-MAINTAINER Jim Holdaway
+LABEL maintainer="Jim Holdaway"
 
 # Install python distro packages for pelican
 
