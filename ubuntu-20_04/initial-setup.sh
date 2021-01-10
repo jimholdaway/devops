@@ -30,4 +30,5 @@ ufw --force enable
 #       At present a bug in Ubuntu 20.04/linode/both? prevents this change
 #       From being persistent. Thus kernel parameters are set in grub config
 echo Updating kernel parameters to disable IPV6...
-sed -i -e '/GRUB_CMDLINE_LINUX/ s/"$/ ipv6.disable=1"/' grub
+sed -i -e '/GRUB_CMDLINE_LINUX/ s/"$/ ipv6.disable=1"/' /etc/default/grub
+update-grub
