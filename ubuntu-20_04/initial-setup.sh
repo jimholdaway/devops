@@ -1,4 +1,6 @@
 #/bin/bash
+#<UDF name="username" Label="Limited User Username"/>
+#<UDF name="password" Label="Limited User Password"/>
 
 # Update system
 echo Updating the system...
@@ -32,3 +34,6 @@ ufw --force enable
 echo Updating kernel parameters to disable IPV6...
 sed -i -e '/GRUB_CMDLINE_LINUX/ s/"$/ ipv6.disable=1"/' /etc/default/grub
 update-grub
+
+# Add a limited rights user
+useradd -m -p $PASSWORD -s /bin/bash $USERNAME 
