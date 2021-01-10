@@ -36,4 +36,7 @@ sed -i -e '/GRUB_CMDLINE_LINUX/ s/"$/ ipv6.disable=1"/' /etc/default/grub
 update-grub
 
 # Add a limited rights user
-useradd -m -p $PASSWORD -s /bin/bash $USERNAME 
+useradd -m -p $PASSWORD -s /bin/bash $USERNAME
+
+# Reboot
+shutdown -r now
