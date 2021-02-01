@@ -38,5 +38,8 @@ update-grub
 # Add a limited rights user
 useradd -m -p $PASSWORD -s /bin/bash $USERNAME
 
+# Copy SSH key to limited rights user
+rsync --archive --chown=$USERNAME:$USERNAME ~/.ssh /home/$USERNAME
+
 # Reboot
 shutdown -r now
