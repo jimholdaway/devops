@@ -3,7 +3,7 @@
 #<UDF name="password" Label="Limited User Password"/>
 
 # Update system
-echo Updating the system...
+echo Updating the system
 apt update && apt upgrade -y
 
 # Disable password, root and IPV6 connections over SSH
@@ -19,7 +19,7 @@ sed -i -e "s/AddressFamily inet6/AddressFamily inet/" /etc/ssh/sshd_config
 sed -i -e "s/#AddressFamily inet6/AddressFamily inet/" /etc/ssh/sshd_config
 
 # Simple SSH only UFW firewall
-echo Writing simple SSH only UFW (firewall) rules...
+echo Writing simple SSH only UFW rules
 sed -i -e "s/IPV6=yes/IPV6=no/" /etc/default/ufw
 ufw default deny incoming
 ufw default allow outgoing
@@ -31,7 +31,7 @@ ufw --force enable
 # Note: Normal to edit sysctl and make chnage persistent to achieve this
 #       At present a bug in Ubuntu 20.04/linode/both? prevents this change
 #       From being persistent. Thus kernel parameters are set in grub config
-echo Updating kernel parameters to disable IPV6...
+echo Updating kernel parameters to disable IPV6
 sed -i -e '/GRUB_CMDLINE_LINUX/ s/"$/ ipv6.disable=1"/' /etc/default/grub
 update-grub
 
