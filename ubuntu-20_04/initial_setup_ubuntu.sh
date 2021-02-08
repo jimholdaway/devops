@@ -2,6 +2,32 @@
 #<UDF name="username" Label="Limited User Username"/>
 #<UDF name="password" Label="Limited User Password"/>
 
+'''
+Initial setup up Ubuntu 20.04 VPS.
+
+The end result is an up to date Ubuntu server with a User Defined Field defined non-administrative rights user.
+
+Required: Public SSH key to be used to connect saved in Linode account
+
+Note: after this script has been used only connection by SSH key is allowed.
+
+Using script implements
+
+ - upgrading packages
+ -hardening SSH
+  -denying root login
+  -denying password authentication
+  -only allowing SSH connection over IPV4
+ -simple firewall
+  -allow incoming SSH port 22
+  -deny all other incoming
+  -allow all outgoing
+  -IPV4 only
+-deactivates IPV6
+-add non-admin user
+-copies SSH key that was chosen on create linode interface over to user
+'''
+
 # Update system
 echo Updating the system
 apt update && apt upgrade -y
@@ -28,7 +54,7 @@ ufw disable
 ufw --force enable
 
 # Set kernel parameters to deactivate IPV6
-# Note: Normal to edit sysctl and make chnage persistent to achieve this
+# Note: Normal to edit sysctl and make change persistent to achieve this
 #       At present a bug in Ubuntu 20.04/linode/both? prevents this change
 #       From being persistent. Thus kernel parameters are set in grub config
 echo Updating kernel parameters to disable IPV6
@@ -43,18 +69,3 @@ rsync --archive --chown=$USERNAME:$USERNAME ~/.ssh /home/$USERNAME
 
 # Reboot
 shutdown -r now
-
-#things to try
-# try chnaging udername field name
-
-# try below
-
-# Add user
-cp /root/.bashrc /etc/skel/.bashrc
-adduser --disabled-password --gecos "" --shell /bin/bash $GITHUB_USER
-usermod -aG sudo $GITHUB_USER
-echo "$GITHUB_USER:$USER_PASSWORD" | sudo chpasswd
-mkdir -p /home/$GITHUB_USER/.ssh
-cat /root/.ssh/authorized_keys >> /home/$GITHUB_USER/.ssh/authorized_keys
-chown -R "$GITHUB_USER":"$GITHUB_USER" /home/$GITHUB_USER/.ssh
-
