@@ -7,14 +7,15 @@ Set up python dev server on Ubuntu 20.04 VPS.
 
 The end result is an up to date dev server suitable for python virtual environments with a User Defined Field defined non-administrative rights user.
 
-Required: Public SSH key to be used to connect saved in Linode account
+Required: Public SSH key to be used to connect saved in Linode account, check the SSH key on deploy
 
 Note: after this script has been used only connection by SSH key is allowed.
 
 Using script implements
 
  - upgrading packages
- - installs python dev environment, including build environment 
+ - installs python dev environment, including build environment
+ - install sqlite3 
  -hardening SSH
   -denying root login
   -denying password authentication
@@ -34,7 +35,7 @@ echo Updating the system
 apt update && apt upgrade -y
 
 # Installing python environment
-apt install -y python3-pip python3-venv python3-dev build-essential gfortran 
+apt install -y python3-pip python3-venv python3-dev build-essential gfortran sqlite3 
 
 # Disable password, root and IPV6 connections over SSH
 echo Disabling password, root and IPV6 connections over SSH...
