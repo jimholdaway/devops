@@ -77,7 +77,7 @@ rsync --archive --chown=$USERNAME:$USERNAME ~/.ssh /home/$USERNAME
 # Git config
 cat > /home/$USERNAME/.gitconfig <<EOM
 [user]
-  name = $GITNAME
+  name = $GITUSER
   email = $GITEMAIL
 EOM
 chown $USERNAME:$USERNAME /home/$USERNAME/.gitconfig
