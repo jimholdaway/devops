@@ -26,3 +26,16 @@
 - adds non-admin user
 - python dev environment (including build environment and sqlite3)
 - git global config for user
+
+## ios_web_image.sh
+
+- upgrades packages
+- hardens SSH
+- simple firewall
+- deactivates IPV6
+- adds non-admin user
+- python dev environment (including build environment and sqlite3)
+- libheif
+- git global config for user
+- clones [ios_web_image](https://github.com/jimholdaway/ios_web_image)
+
