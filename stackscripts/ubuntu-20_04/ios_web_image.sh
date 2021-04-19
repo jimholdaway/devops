@@ -4,7 +4,7 @@
 #<UDF name="gituser" Label="Git User Name"/>
 #<UDF name="gitemail" Label="Git User Email"/>
 #<UDF name="githubuser" Label="Github User Name"/>
-#<UDF name="githubrepo" Label=""
+#<UDF name="githubrepo" Label="Github Repo"/>
 
 # Update system
 echo Updating the system
