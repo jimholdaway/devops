@@ -37,5 +37,4 @@
 - python dev environment (including build environment and sqlite3)
 - libheif
 - git global config for user
-- clones [ios_web_image](https://github.com/jimholdaway/ios_web_image)
 

@@ -3,8 +3,6 @@
 #<UDF name="password" Label="Limited User Password"/>
 #<UDF name="gituser" Label="Git User Name"/>
 #<UDF name="gitemail" Label="Git User Email"/>
-#<UDF name="githubuser" Label="Github User Name"/>
-#<UDF name="githubrepo" Label="Github Repo"/>
 
 # Update system
 echo Updating the system
@@ -14,7 +12,6 @@ apt update && apt upgrade -y
 apt install -y python3-pip python3-venv python3-dev build-essential gfortran sqlite3
 
 # Install relevant image libraries
-
 apt install -y libffi libheif-dev libde265-dev
 
 # Disable password, root and IPV6 connections over SSH
@@ -56,10 +53,6 @@ cat > /home/$USERNAME/.gitconfig <<EOM
   email = $GITEMAIL
 EOM
 chown $USERNAME:$USERNAME /home/$USERNAME/.gitconfig
-
-# Clone git repo
-# Testing location
-curl -L https://github.com/$GITHUBUSER/$GITHUBREPO/tarball/master | tar zx
 
 # Reboot
 shutdown -r now
