@@ -27,7 +27,7 @@
 - python dev environment (including build environment and sqlite3)
 - git global config for user
 
-## ios_web_image.sh
+## python-image-git.sh
 
 - upgrades packages
 - hardens SSH
